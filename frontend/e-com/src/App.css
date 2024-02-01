@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: beige;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.product-details {
+  text-align: center;
+  padding: 2rem 5rem;
+}
+.product-details button{
+  margin: 1rem 0;
+  padding: 10px 25px;
+  border: none;
+  background-color: aqua;
+  cursor: pointer;
+  font-weight: 800;
+  color: white;
+  border-radius: 20px;
+}
+.product-details button a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+}
+.product-details .prod-head
+{
+  font-size: 3rem;
+}
+
+.product-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-width: 400px;
+  min-height: 500px;
+  gap: 1.3rem;
+}
+
+.product {
+  display: flex;
+  margin-top: 2rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  overflow: hidden;
+  flex-grow: 1;
+  border: 2px solid black;
+  border-radius: 15px;
+  min-height: 400px;
+  cursor: pointer;
+  width: 300px; /* Adjust the width based on your design */
+  transition: all ease-in-out 0.5s;
+}
+.product:hover{
+  transform: scale(1.1);
+}
+
+.product .imageContainer {
+  width: 100%;
+  height: 50%; /* Adjust the height based on your design */
+  overflow: hidden;
+  border-bottom: 2px solid black;
+}
+
+.product .imageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.product .details {
+  padding: 10px;
+  text-align: center;
+}
+.product .cat-price{
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.product h1 {
+  font-size: 1.5rem;
+}
+
+.product .desc {
+  font-style: italic;
+  color: rgb(85, 84, 84);
+}
+
+.product .price {
+  font-weight: bold;
+  color: green; /* Change the color based on your design */
+}
+
+
+.addProd{
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.addProd .header-img{
+  width: 100%;
+  height: 500px;
+  
+}
+.header-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.addProd h1{
+  font-size: 3rem;
+  margin: 2rem 0 ;
+}
+
+.addProd form{
+  background-color: rgba(187, 184, 184, 0.562);
+  padding: 10px ;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.addProd form input{
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  padding: 0.6rem 15px;
+  border: none;
+
+
+}
+.addProd form button{
+  margin: 1rem 0;
+  padding: 10px 25px;
+  border: none;
+  background-color: aqua;
+  cursor: pointer;
+  font-weight: 800;
+  color: white;
+  border-radius: 20px;
+}
+
+
+.home{
+  background: linear-gradient(to right , rgba(0,0,0,0.4) , rgba(0,0,0,0.6)) , url("https://images.unsplash.com/photo-1517582837435-fdb3ccb5bb41?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNrYXRlJTIwd2lkZXxlbnwwfHwwfHx8MA%3D%3D");
+  height: 100vh;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  padding: 12rem 3rem;
+  text-align: center;
+}
+.home h1{
+  font-size: 6rem;
+  
+}
+.home button{
+  padding: 10px 2.3rem;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 2rem 0;
+  border: none;
+  border-radius: 20px;
+  background-color: antiquewhite;
+}
+.home button:hover{
+  background-color: rgb(226, 207, 207);
+}
+
+.home button a{
+  text-decoration: none;
+  color: black;
+}
