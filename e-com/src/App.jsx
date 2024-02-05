@@ -21,58 +21,12 @@ function App() {
 
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            {user ? (
-              <>
-                <li>
-                  <Link to="/get">Shop</Link>
-                </li>
-                <li>
-                  <button onClick={handleLogout}>Logout</button>
-                </li>
-              </>
-            ) : (
-              <>
-                <li>
-                  <Link to="/signup">Sign Up</Link>
-                </li>
-                <li>
-                  <Link to="/signin">Sign In</Link>
-                </li>
-              </>
-            )}
-          </ul>
-        </nav>
-
-        <hr />
-
-        <Route path="/" exact component={HomePage} />
-        <Route
-          path="/signup"
-          render={() => (
-            <SignupPage onSignup={() => console.log("Signup logic here")} />
-          )}
-        />
-        <Route
-          path="/signin"
-          render={() => <SigninPage onLogin={handleLogin} />}
-        />
-        <Route
-          path="/get"
-          render={() =>
-            user ? <Products user={user} /> : <Redirect to="/signin" />
-          }
-        />
-        <Route path="/add" component={AddProduct} />
-      </div>
+      <Route path='/' element={ <HomePage/> }/>
+      <Route path='/get' element={ <Products/> } />
+      <Route path='/add' element={ <AddProduct/> } />
+                
     </Router>
   );
 }
 
 export default App;
-
