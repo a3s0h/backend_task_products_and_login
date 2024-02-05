@@ -76,32 +76,3 @@ function App() {
 
 export default App;
 
-// SignupPage.jsx
-import React from 'react';
-
-const SignupPage = ({ onSignup }) => {
-  return (
-    <div>
-      <h1>Sign Up Page</h1>
-      {/* Signup form and logic */}
-      <button onClick={onSignup}>Sign Up</button>
-    </div>
-  );
-};
-
-export default SignupPage;
-
-// SigninPage.jsx
-import React from 'react';
-
-const SigninPage = ({ onLogin }) => {
-  return (
-    <div>
-      <h1>Sign In Page</h1>
-      {/* Signin form and logic */}
-      <button onClick={onLogin}>Sign In</button>
-    </div>
-  );
-};
-
-export default SigninPage;
