@@ -16,7 +16,7 @@ connectDB();
 app.use(express.json());
 app.use(cors(
   {
-    origin : [""],
+    origin : ["backend-task-products-and-login.vercel.app"],
     methods:["POST","GET"],
     credentials:true
   }
