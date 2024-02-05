@@ -11,7 +11,7 @@ const AddProduct = () => {
     const [category, setCategory] = useState("");
 
     const navigate = useNavigate(); // Initialize useNavigate
-
+    axios.defaults.withCredentials = true;
     const addDetails = async () => {
         try {
             const productDetails = {
