@@ -11,7 +11,7 @@ const Products = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get("http://localhost:3000/api/products");
+            const response = await axios.get("backend-task-products-and-login-api.vercel.app/api/products");
             console.log(response);
             setData(response.data);
         }
