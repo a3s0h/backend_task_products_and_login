@@ -8,7 +8,7 @@ import image from "../assets/laptop.jpg"
 
 const Products = () => {
     const [data, setData] = useState([]);
-
+axios.defaults.withCredentials = true;
     useEffect(() => {
         const fetchData = async () => {
             const response = await axios.get("backend-task-products-and-login-api.vercel.app/api/products");
