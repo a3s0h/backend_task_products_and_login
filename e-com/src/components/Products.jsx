@@ -52,3 +52,12 @@ const Products = () => {
 }
 
 export default Products;
+
+/*
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/a3s0h/e-commerce-store.git
+git push -u origin main
+*/

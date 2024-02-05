@@ -14,7 +14,13 @@ connectDB();
 
 // Parse JSON request body
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+  {
+    origin : [""],
+    methods:["POST","GET"],
+    credentials:true
+  }
+));
 
 // Define authentication routes
 app.use('/auth', authRoutes);

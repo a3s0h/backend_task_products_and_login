@@ -1,51 +1,63 @@
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const User = require('../models/User');
+const User = require("../models/User");
 
-// Register a new user
-const register = async (req, res, next) => {
-    const { username, email, password } = req.body;
+
+
+exports.registerUser = async (req, res) => {
   
-    try {
-      const hashedPassword = await bcrypt.hash(password, 10);
-      console.log('Hashed Password:', hashedPassword); 
-      const user = new User({ username, email, password: hashedPassword });
-      await user.save();
-      res.json({ message: 'Registration successful' });
-    } catch (error) {
-      next(error);
-    }
-  };
-  
+    const { name, email, password } = req.body;
+  try{
 
-// Login with an existing user
-const login = async (req, res, next) => {
-    const { username, password } = req.body;
+      const existingUser = User.findOne({email});
+    
+      if(!existingUser)
+      {
+         await User.create({name,email,password});
+         res.status(200).json({message:"Registration successful!"});
+      }
+      else{
+        res.status(404).json({message:"Email already registered"});
+      }
+  }
+  catch{
+    res.status(501).json({message:"Internal server error!"});
+  }
 
-    try {
-        const user = await User.findOne({ username });
-
-        if (!user) {
-            return res.status(404).json({ message: 'User not found' });
-        }
-
-        console.log('Entered Password:', password);
-
-        // Use bcrypt.compare to securely compare passwords
-        const passwordMatch = await bcrypt.compare(password, user.password);
-
-        if (passwordMatch) {
-            const token = generateToken(user._id);
-            res.json({ token });
-        } else {
-            return res.status(401).json({ message: 'Incorrect password' });
-        }
-    } catch (error) {
-        console.error('Login Error:', error);
-        next(error);
-    }
 };
+
+exports.loginUser =  async (req, res) => {
+  const { email, password } = req.body;
+
+  try{
+    const {existingEmail,existingPaasword} = User.findOne({email,password});
+    if(!existingEmail || !existingPaasword)
+    {
+        res.status(404).json({message:"No user found!"});
+    }
+    else{
+        res.status(200).json({message:"Login successful!"});
+    }
+  }
+  catch{
+    res.status(501).json({message:"Email or password incorrect!"});
+  }
   
+  
+};
 
+exports.logoutUser = (req, res) => {
+  req.session.destroy((err) => {
+    // delete session data from store, using sessionID in cookie
+    if (err) throw err;
+    res.clearCookie("session-id"); // clears cookie containing expired sessionID
+    res.send("Logged out successfully");
+  });
+}
 
-module.exports = { register, login };
+exports.authChecker = (req, res) => {
+  const sessUser = req.session.user;
+  if (sessUser) {
+    return res.json(sessUser);
+  } else {
+    return res.status(401).json({ msg: "Unauthorized" });
+  }
+};
