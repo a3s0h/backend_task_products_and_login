@@ -21,7 +21,7 @@ const AddProduct = () => {
                 category: category
             };
 
-            await axios.post("http://localhost:3000/api/products", productDetails);
+            await axios.post("backend-task-products-and-login-api.vercel.app/api/products", productDetails);
 
             // Clear the input fields
             setName("");
